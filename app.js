@@ -68,9 +68,10 @@ request.end();
 })
 
 // deploying on heroku port , defineed by them or localhost:3000 
-app.listen(process.env.PORT || 3000);{
+app.listen(process.env.PORT || 3000, function(){
     console.log("Server Running 3000")
-}
+
+})
 
 // api key
 // 02ad3cf287dc230544a53d8b8ae5a2a6-us18 : replace usX (X) with 18 after us
