@@ -5,7 +5,6 @@ const https = require("https");
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}))
 
-// used to use static files like css and images naming the dir public 
 app.use(express.static("public"));
 
 app.get('/', function(req, res){
@@ -42,11 +41,11 @@ app.post('/faliure', function(req, res){
 const jsonData = JSON.stringify(data);
 
 // posting data to the external resource : mailchimp
-const url = "https://us18.api.mailchimp.com/3.0/lists/2e14673f4c";
+const url = process.env.URL;
 // javascipt object 
 const options = {
     method: 'POST',
-    auth: "dushyant:02ad3cf287dc230544a53d8b8ae5a2a6-us18"
+    auth: process.env.AUTH
 }
 
 // getting response from mailchimp server 
@@ -72,8 +71,3 @@ app.listen(process.env.PORT || 3000, function(){
     console.log("Server Running 3000")
 
 })
-
-// api key
-// 02ad3cf287dc230544a53d8b8ae5a2a6-us18 : replace usX (X) with 18 after us
-// Audience id 
-// 2e14673f4c
